@@ -1,10 +1,12 @@
 {
   "name": "expo-kerberus",
   "version": "0.1.0",
-  "description": "Kerberus captcha for iCure products",
+  "description": "Kerberus is a PoW captcha. This Expo-Kerberus is a wrapper for expo application",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
+    "updateIosFramework": "cd Kerberus && ./gradlew :lib:assembleKerberusXCFramework && cd .. && rm -rf ./ios/Frameworks && mkdir -p ios/Frameworks && cp -r ./Kerberus/library/build/XCFrameworks/release/Kerberus.xcframework ios/Frameworks/Kerberus.xcframework",
+    "cleanReinstallPods": "cd example/ios && rm -rf ~/Library/Caches/CocoaPods && rm -rf Pods && rm -rf ~/Library/Developer/Xcode/DerivedData/ && pod deintegrate && pod setup && pod install && cd ../..",
     "build": "expo-module build",
     "clean": "expo-module clean",
     "lint": "expo-module lint",
@@ -28,7 +30,6 @@
   "author": "iCure <dev@icure.com> (https://github.com/icure)",
   "license": "MIT",
   "homepage": "https://github.com/icure/expo-kerberus#readme",
-  "dependencies": {},
   "devDependencies": {
     "@types/react": "^18.0.25",
     "expo-module-scripts": "^3.5.2",
@@ -39,5 +40,5 @@
     "react": "*",
     "react-native": "*"
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "packageManager": "yarn@4.2.1"
 }

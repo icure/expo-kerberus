@@ -1410,7 +1410,7 @@ SPEC CHECKSUMS:
   ExpoFileSystem: 80bfe850b1f9922c16905822ecbf97acd711dc51
   ExpoFont: 00756e6c796d8f7ee8d211e29c8b619e75cbf238
   ExpoKeepAwake: 3b8815d9dd1d419ee474df004021c69fdd316d08
-  ExpoKerberus: 5a826a659dde0400ba14d2750ba797b4529494d1
+  ExpoKerberus: 50d435572d24435f9704fe49385706f0bf4dce90
   ExpoModulesCore: f30a203ff1863bab3dd9f4421e7fc1564797f18a
   FBLazyVector: ac12dc084d1c8ec4cc4d7b3cf1b0ebda6dab85af
   fmt: 4c2741a687cc09f0634a2e2c72a838b99f1ff120

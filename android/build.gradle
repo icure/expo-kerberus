@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 
-group = 'com.icure.kerberus'
+group = 'com.icure.kerberus.expo'
 version = '0.1.0'
 
 def expoModulesCorePlugin = new File(project(":expo-modules-core").projectDir.absolutePath, "ExpoModulesCorePlugin.gradle")
@@ -31,8 +31,13 @@ if (useManagedAndroidSdkVersions) {
   }
 }
 
+repositories {
+  mavenLocal()
+  mavenCentral()
+}
+
 android {
-  namespace "com.icure.kerberus"
+  namespace "com.icure.kerberus.expo"
   defaultConfig {
     versionCode 1
     versionName "0.1.0"
@@ -40,4 +45,9 @@ android {
   lintOptions {
     abortOnError false
   }
+}
+
+
+dependencies {
+  implementation "com.icure:kerberus:1.0.0-RC.3"
 }

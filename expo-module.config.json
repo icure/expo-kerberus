@@ -1,9 +1,9 @@
 {
-  "platforms": ["ios", "tvos", "android", "web"],
+  "platforms": ["ios", "android"],
   "ios": {
     "modules": ["ExpoKerberusModule"]
   },
   "android": {
-    "modules": ["com.icure.kerberus.ExpoKerberusModule"]
+    "modules": ["com.icure.kerberus.expo.ExpoKerberusModule"]
   }
 }

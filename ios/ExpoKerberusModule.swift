@@ -1,6 +1,9 @@
 import ExpoModulesCore
+import Kerberus
+import Foundation
 
 public class ExpoKerberusModule: Module {
+    
   // Each module class must implement the definition function. The definition consists of components
   // that describes the module's functionality and behavior.
   // See https://docs.expo.dev/modules/module-api for more details about available components.
@@ -9,36 +12,41 @@ public class ExpoKerberusModule: Module {
     // Can be inferred from module's class name, but it's recommended to set it explicitly for clarity.
     // The module will be accessible from `requireNativeModule('ExpoKerberus')` in JavaScript.
     Name("ExpoKerberus")
-
-    // Sets constant properties on the module. Can take a dictionary or a closure that returns a dictionary.
-    Constants([
-      "PI": Double.pi
-    ])
-
-    // Defines event names that the module can send to JavaScript.
-    Events("onChange")
-
-    // Defines a JavaScript synchronous function that runs the native code on the JavaScript thread.
-    Function("hello") {
-      return "Hello world! 👋"
-    }
+      
+    Events("onProgress")
 
     // Defines a JavaScript function that always returns a Promise and whose native code
     // is by default dispatched on the different thread than the JavaScript runtime runs on.
-    AsyncFunction("setValueAsync") { (value: String) in
-      // Send an event to JavaScript.
-      self.sendEvent("onChange", [
-        "value": value
-      ])
-    }
-
-    // Enables the module to be used as a native view. Definition components that are accepted as part of the
-    // view definition: Prop, Events.
-    View(ExpoKerberusView.self) {
-      // Defines a setter for the `name` prop.
-      Prop("name") { (view: ExpoKerberusView, prop: String) in
-        print(prop)
-      }
+      AsyncFunction("resolveChallenge") { (challenge: ExpoChallenge, serializedInput: String) -> ExpoSolution in
+          try await KerberusKt.resolveChallenge(config: challenge.toChallenge(), serializedInput: serializedInput) { progress in
+              self.sendEvent("onProgress", ["progress": progress.doubleValue])
+          }.toExpoSolution()
     }
   }
+}
+
+struct ExpoChallenge: Record {
+    @Field
+    var id: String
+    @Field
+    var salts: [String]
+    @Field
+    var difficultyFactor: Int
+
+    func toChallenge() -> Challenge {
+        return Challenge(id: id, salts: salts, difficultyFactor: Int32(difficultyFactor))
+    }
+}
+
+struct ExpoSolution: Record {
+    @Field
+    var id: String
+    @Field
+    var nonces: [String]
+}
+
+extension Solution {
+    func toExpoSolution() -> ExpoSolution {
+        return ExpoSolution(id: Field(wrappedValue: id), nonces: Field(wrappedValue: nonces))
+    }
 }

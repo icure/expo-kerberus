@@ -1,0 +1,3 @@
+[submodule "Kerberus"]
+	path = Kerberus
+	url = git@github.com:icure/Kerberus.git
