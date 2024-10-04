@@ -1,6 +1,6 @@
 {
-  "name": "expo-kerberus",
-  "version": "0.1.0",
+  "name": "@icure/expo-kerberus",
+  "version": "1.0.0",
   "description": "Kerberus is a PoW captcha. This Expo-Kerberus is a wrapper for expo application",
   "main": "build/index.js",
   "types": "build/index.d.ts",
