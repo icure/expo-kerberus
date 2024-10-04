@@ -5,7 +5,7 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
-    "updateIosFramework": "cd Kerberus && ./gradlew :lib:assembleKerberusXCFramework && cd .. && rm -rf ./ios/Frameworks && mkdir -p ios/Frameworks && cp -r ./Kerberus/library/build/XCFrameworks/release/Kerberus.xcframework ios/Frameworks/Kerberus.xcframework",
+    "updateIosFramework": "cd Kerberus && ./gradlew :lib:assembleKerberusKotlinXCFramework && cd .. && rm -rf ./ios/Frameworks && mkdir -p ios/Frameworks && cp -r ./Kerberus/library/build/XCFrameworks/release/KerberusKotlin.xcframework ios/Frameworks/KerberusKotlin.xcframework",
     "cleanReinstallPods": "cd example/ios && rm -rf ~/Library/Caches/CocoaPods && rm -rf Pods && rm -rf ~/Library/Developer/Xcode/DerivedData/ && pod deintegrate && pod setup && pod install && cd ../..",
     "build": "expo-module build",
     "clean": "expo-module clean",

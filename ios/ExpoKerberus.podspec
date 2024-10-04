@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.static_framework = true
 
   s.dependency 'ExpoModulesCore'
-  s.vendored_frameworks = 'Frameworks/Kerberus.xcframework'
+  s.vendored_frameworks = 'Frameworks/KerberusKotlin.xcframework'
 
   # Swift/Objective-C compatibility
   s.pod_target_xcconfig = {

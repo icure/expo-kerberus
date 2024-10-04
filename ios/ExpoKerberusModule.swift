@@ -1,5 +1,5 @@
 import ExpoModulesCore
-import Kerberus
+import KerberusKotlin
 import Foundation
 
 public class ExpoKerberusModule: Module {

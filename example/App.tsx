@@ -1,6 +1,6 @@
-import { Button, Settings, StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
 
-import { addProgressListener, Challenge, resolveChallenge, Solution } from "expo-kerberus";
+import { addProgressListener, resolveChallenge, Solution } from "expo-kerberus";
 import { useEffect, useState } from "react";
 import { uuid } from "expo-modules-core";
 
@@ -32,8 +32,8 @@ export default function App() {
 				const pow = await resolveChallenge(
 					{
 						id: uuid.v4(),
-						salts: Array.from({ length: 50 }, (_, i) => uuid.v4()),
-						difficultyFactor: 10000
+						salts: Array.from({ length: 10 }, (_, i) => uuid.v4()),
+						difficultyFactor: 50000
 					},
 					uuid.v4()
 				)
